@@ -43,7 +43,7 @@ jobs:
         name: ethereum/deploy
     script:
         - npm install
-        - npx truffle migrate --network mainnet --reset
+        - LOCAL=true npx truffle migrate --network mainnet --reset
 
         
 # Stages help you define how exactly do you want your jobs to be executed. The ordering of elements
