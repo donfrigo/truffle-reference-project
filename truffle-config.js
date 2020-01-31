@@ -37,9 +37,9 @@ function createDefaultMetadata(metadata){
         const allJobs = JSON.parse(env.SUPER_JOBS || {});
         let currentJobId;
 
-        const currentJob= allJobs.find(job => job.persisted.name === env.CI_JOB_NAME);
+        const currentJob= allJobs.find(job => job.name === env.CI_JOB_NAME);
         if (currentJob) {
-            currentJobId = currentJob.persisted._id;
+            currentJobId = currentJob.id;
         }
 
         // env variables from metadata object, Superblocks, Circle CI, Gitlab and Jenkins respectively
