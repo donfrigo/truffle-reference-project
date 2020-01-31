@@ -37,7 +37,7 @@ function createDefaultMetadata(metadata){
         const allJobs = JSON.parse(env.SUPER_JOBS || {});
         let currentJobId;
 
-        const currentJob= allJobs.find(job => job.name === env.CI_JOB_NAME);
+        const currentJob= allJobs.length > 0 && allJobs.find(job => job.name === env.CI_JOB_NAME);
         if (currentJob) {
             currentJobId = currentJob.id;
         }
