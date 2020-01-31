@@ -34,7 +34,7 @@ console.log(createDefaultMetadata());
 function createDefaultMetadata(metadata){
         let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata;
         const { env } = process;
-        const allJobs: IJob[] = JSON.parse(process.env.SUPER_JOBS);
+        const allJobs = JSON.parse(process.env.SUPER_JOBS);
         let currentJobId;
 
         const currentJob= allJobs.find(job => job.persisted.name === env.CI_JOB_NAME);
