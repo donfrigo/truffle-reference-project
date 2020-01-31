@@ -34,7 +34,7 @@ function createDefaultMetadata(metadata){
         let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata || {};
         const { env } = process;
         console.log(env.SUPER_JOBS, process.env.SUPER_JOBS, env.CI_JOB_NAME);
-        const allJobs = JSON.parse(env.SUPER_JOBS || {});
+        const allJobs = JSON.parse(env.SUPER_JOBS || '{}');
         let currentJobId;
 
         const currentJob= allJobs.length > 0 && allJobs.find(job => job.name === env.CI_JOB_NAME);
