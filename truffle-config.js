@@ -34,6 +34,7 @@ console.log(createDefaultMetadata());
 function createDefaultMetadata(metadata){
         let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata || {};
         const { env } = process;
+        console.log(env.SUPER_JOBS);
         const allJobs = JSON.parse(env.SUPER_JOBS || {});
         let currentJobId;
 
