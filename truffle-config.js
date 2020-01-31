@@ -28,7 +28,6 @@ const token = 'rUw/6qZxtkjYHAKYKB+nMyZsxS79Ys9AJjVDFqwyNX5x87fykNGzVM0S';
 // Simply your 12 seeds word associated with your wallet. This is used only for the SuperHDWallet provider
 // so you can sign the txs client side, but still keep track fo the deployment within Superblocks.
 const mnemonic = process.env.MNEMONIC;
-
 console.log(createDefaultMetadata());
 
 function createDefaultMetadata(metadata){
