@@ -28,7 +28,33 @@ const token = 'rUw/6qZxtkjYHAKYKB+nMyZsxS79Ys9AJjVDFqwyNX5x87fykNGzVM0S';
 // Simply your 12 seeds word associated with your wallet. This is used only for the SuperHDWallet provider
 // so you can sign the txs client side, but still keep track fo the deployment within Superblocks.
 const mnemonic = process.env.MNEMONIC;
-console.log('ALL ENV VARIABLES: ',process.env);
+
+console.log(createDefaultMetadata());
+
+function createDefaultMetadata(metadata){
+        let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata;
+        const { env } = process;
+        const allJobs: IJob[] = JSON.parse(process.env.SUPER_JOBS);
+        let currentJobId;
+
+        const currentJob= allJobs.find(job => job.persisted.name === env.CI_JOB_NAME);
+        if (currentJob) {
+            currentJobId = currentJob.persisted._id;
+        }
+
+        // env variables from metadata object, Superblocks, Circle CI, Gitlab and Jenkins respectively
+        return {
+            jobId : jobId || currentJobId || env.CIRCLE_WORKFLOW_ID || env.CI_JOB_ID || env.BUILD_ID,
+            jobURL : jobURL || env.CIRCLE_BUILD_URL || env.CI_JOB_URL || env.BUILD_URL,
+            description : description || env.SUPER_COMMIT_DESCRIPTION || env.CI_COMMIT_MESSAGE,
+            hash : hash || env.SUPER_COMMIT_SHA1 || env.CIRCLE_SHA1 || env.CI_COMMIT_SHA,
+            branch : branch || env.SUPER_COMMIT_BRANCH || env.CIRCLE_BRANCH || env.COMMIT_BRANCH,
+            branchUrl : branchUrl || env.SUPER_COMMIT_BRANCH_URL || env.CIRCLE_REPOSITORY_URL || env.CI_REPOSITORY_URL,
+            commitUrl : commitUrl || env.SUPER_COMMIT_URL,
+            buildConfigId : buildConfigId || env.SUPER_BUILD_CONFIG_ID
+        }
+}
+
 module.exports = {
   plugins: ["truffle-security"],
 
