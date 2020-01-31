@@ -32,7 +32,7 @@ const mnemonic = process.env.MNEMONIC;
 console.log(createDefaultMetadata());
 
 function createDefaultMetadata(metadata){
-        let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata;
+        let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata || {};
         const { env } = process;
         const allJobs = JSON.parse(process.env.SUPER_JOBS);
         let currentJobId;
