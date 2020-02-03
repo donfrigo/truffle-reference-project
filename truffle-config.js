@@ -51,7 +51,8 @@ function createDefaultMetadata(metadata){
             branch : branch || env.SUPER_COMMIT_BRANCH || env.CIRCLE_BRANCH || env.COMMIT_BRANCH,
             branchUrl : branchUrl || env.SUPER_COMMIT_BRANCH_URL || env.CIRCLE_REPOSITORY_URL || env.CI_REPOSITORY_URL,
             commitUrl : commitUrl || env.SUPER_COMMIT_URL,
-            buildConfigId : buildConfigId || env.SUPER_BUILD_CONFIG_ID
+            buildConfigId : buildConfigId || env.SUPER_BUILD_CONFIG_ID,
+            superblocks: env.SUPER_CI || 'false'    
         }
 }
 
