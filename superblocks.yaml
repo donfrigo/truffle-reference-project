@@ -59,8 +59,9 @@ stages:
   - deploy_to_testnets:
       jobs:
         - deploy_to_rinkeby_automatic:
-            only:
-              - master
+            filters:
+              only:
+                - master
         - deploy_to_rinkeby_manually:
             when: manual
             filters:
