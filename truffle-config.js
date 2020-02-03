@@ -29,6 +29,7 @@ const token = 'rUw/6qZxtkjYHAKYKB+nMyZsxS79Ys9AJjVDFqwyNX5x87fykNGzVM0S';
 // so you can sign the txs client side, but still keep track fo the deployment within Superblocks.
 const mnemonic = process.env.MNEMONIC;
 console.log(createDefaultMetadata());
+console.log('PROCESS ENV: ', process.env);
 
 function createDefaultMetadata(metadata){
         let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata || {};
