@@ -1,5 +1,6 @@
 version: 1
 
+
 # Jobs are the fundamental elements. They are required to have unique names (with no spaces)
 jobs:
   build:
@@ -26,6 +27,7 @@ jobs:
     script:
         - npm install
         - LOCAL=TRUE npx truffle migrate --network rinkeby --reset
+
 
   # This job uses the ManualSignProvider to be able to securely and manually sign each transactions a given deployment is creating without ever
   # needing to share your private key with us.
