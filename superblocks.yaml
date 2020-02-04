@@ -74,4 +74,4 @@ stages:
             when: manual
             filters:
               only: 
-                - local-setup
+                - master
