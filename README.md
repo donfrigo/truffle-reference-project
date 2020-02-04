@@ -13,7 +13,6 @@ Truffle reference repository to showcase Superblocks functionality on how to bui
 ## Quick start
 Below is described how to get the a **Truffle** project setup and running locally.
 
-
 ### Install node modules
 ```sh
 npm i
