@@ -15,7 +15,6 @@ Below is described how to get the a **Truffle** project setup and running locall
 ```sh
 npm i
 ```
-
 <br/>
 
 ## Setup 
