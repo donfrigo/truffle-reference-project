@@ -17,45 +17,19 @@ let mainnetProvider;
 // Make sure to login into Superblocks, and create a new deployment space in a project. You can find 
 // the deployment space id inside the space settings by clicking the gear icon next to the name
 // const deploymentSpaceId = '5e2fdb1499878058a3f98872';
-const deploymentSpaceId = '5e21566e3f362c0011a880ae';
+// const deploymentSpaceId = '5e21566e3f362c0011a880ae'; // DEV
+const deploymentSpaceId = '5e284837d725f40018cbe5c0'; // PROD
 
 // You need to create a new token in order to authenticate against the service. Login into the dashboard,
 // select the project you want to deploy into, and in the project settings you will find a Project Token 
 // section. 
 // const token = 'P6woot48RjjqowUWe0XdHfdSfMx0M8CF0Qm+1R7ryhN8BlVrLapAElpy';
-const token = 'rUw/6qZxtkjYHAKYKB+nMyZsxS79Ys9AJjVDFqwyNX5x87fykNGzVM0S';
+// const token = 'rUw/6qZxtkjYHAKYKB+nMyZsxS79Ys9AJjVDFqwyNX5x87fykNGzVM0S'; // DEV
+const token = 'n9QwhN15kSqaAUDbITMZUWCYfE+Vy8KQEzvqO6haZaRNM4PL4zn+eGKu'; // PROD
 
 // Simply your 12 seeds word associated with your wallet. This is used only for the SuperHDWallet provider
 // so you can sign the txs client side, but still keep track fo the deployment within Superblocks.
 const mnemonic = process.env.MNEMONIC;
-console.log(createDefaultMetadata());
-console.log('PROCESS ENV: ', process.env);
-
-function createDefaultMetadata(metadata){
-        let { jobId, jobURL, description, hash, branch, branchUrl, commitUrl, buildConfigId } = metadata || {};
-        const { env } = process;
-        console.log(env.SUPER_JOBS, process.env.SUPER_JOBS, env.CI_JOB_NAME);
-        const allJobs = JSON.parse(env.SUPER_JOBS || '{}');
-        let currentJobId;
-
-        const currentJob= allJobs.length > 0 && allJobs.find(job => job.name === env.CI_JOB_NAME);
-        if (currentJob) {
-            currentJobId = currentJob.id;
-        }
-
-        // env variables from metadata object, Superblocks, Circle CI, Gitlab and Jenkins respectively
-        return {
-            jobId : jobId || currentJobId || env.CIRCLE_WORKFLOW_ID || env.CI_JOB_ID || env.BUILD_ID,
-            jobURL : jobURL || env.CIRCLE_BUILD_URL || env.CI_JOB_URL || env.BUILD_URL,
-            description : description || env.SUPER_COMMIT_DESCRIPTION || env.CI_COMMIT_MESSAGE,
-            hash : hash || env.SUPER_COMMIT_SHA1 || env.CIRCLE_SHA1 || env.CI_COMMIT_SHA,
-            branch : branch || env.SUPER_COMMIT_BRANCH || env.CIRCLE_BRANCH || env.COMMIT_BRANCH,
-            branchUrl : branchUrl || env.SUPER_COMMIT_BRANCH_URL || env.CIRCLE_REPOSITORY_URL || env.CI_REPOSITORY_URL,
-            commitUrl : commitUrl || env.SUPER_COMMIT_URL,
-            buildConfigId : buildConfigId || env.SUPER_BUILD_CONFIG_ID,
-            superblocks: env.SUPER_CI || 'false'    
-        }
-}
 
 module.exports = {
   plugins: ["truffle-security"],
