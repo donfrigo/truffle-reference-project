@@ -35,7 +35,7 @@ jobs:
         name: ethereum/deploy
     script:
         - npm install
-        - npx truffle migrate --network rinkeby_metamask --reset
+        - DEV=true npx truffle migrate --network rinkeby_metamask --reset
   
   deploy_to_mainnet:
     image: node:12
