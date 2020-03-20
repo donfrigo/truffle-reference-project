@@ -55,7 +55,6 @@ stages:
   - build_and_test:
       jobs: 
         - build
-        - test
   - deploy_to_testnets:
       jobs:
         - deploy_to_rinkeby_automatic:
